@@ -32,7 +32,7 @@ class UnconditionalSampler(BaseSampler):
 		"""
 		pdbs_dir = os.path.join(params['outdir'], 'pdbs')
 		if not os.path.exists(pdbs_dir):
-			os.makedirs(pdbs_dir)
+			os.makedirs(pdbs_dir, exist_ok=True)
 
 	def create_np_features(self, params):
 		"""
