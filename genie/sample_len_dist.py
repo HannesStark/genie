@@ -25,7 +25,8 @@ def main(args):
         while choice < 4 or choice > 500:
             choice = np.random.choice(lens)
         sample_lens.append(choice)
-    sample_lens = sorted(sample_lens)[::-1]
+    if args.sorted:
+        sample_lens = sorted(sample_lens)[::-1]
     
     # Iterate through all tasks
     for i, length in tqdm(enumerate(sample_lens)):
@@ -67,7 +68,7 @@ if __name__ == '__main__':
     
     # Define environment arguments
     parser.add_argument('--num_devices', type=int, help='Number of GPU devices', default=1)
-    parser.add_argument('--sequential_order', action='store_true', help='Run in increasing order of length')
+    parser.add_argument('--sorted', action='store_true', help='Run in decreasing order of length')
 
     # Parse arguments
     args = parser.parse_args()
